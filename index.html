@@ -1,140 +1,154 @@
-<!DOCTYPE html><html lang="pt-BR">
+<!DOCTYPE html>
+<html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Vertexa — Produtividade, Foco e Organização</title>
-  <meta name="description" content="Vertexa cria ferramentas simples de produtividade, foco e organização para quem quer evoluir de verdade." />
+  <meta charset="UTF-8">
+  <title>Vertexa — Programação do Zero</title>
+
+  <!-- FONTE PREMIUM -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
   <style>
     body {
       margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background: #0f172a;
-      color: #e5e7eb;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(180deg, #f5f6fa, #ffffff);
+      color: #111;
     }
+
     header {
-      padding: 32px 20px;
+      background-color: #0f0f0f;
+      padding: 20px 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: white;
+    }
+
+    header .logo {
+      font-size: 26px;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    header nav a {
+      color: white;
+      margin-left: 25px;
+      text-decoration: none;
+      font-weight: 400;
+    }
+
+    main {
+      max-width: 1100px;
+      margin: 80px auto;
+      padding: 0 20px;
+    }
+
+    .produto {
+      background-color: white;
+      padding: 60px;
+      border-radius: 22px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.15);
       text-align: center;
     }
-    header h1 {
-      font-size: 2.5rem;
-      margin-bottom: 8px;
+
+    .produto h1 {
+      font-size: 40px;
+      margin-bottom: 20px;
     }
-    header p {
+
+    .produto p {
+      font-size: 18px;
+      color: #444;
+      margin-bottom: 30px;
+    }
+
+    .beneficios {
+      text-align: left;
       max-width: 520px;
-      margin: 0 auto;
-      color: #cbd5f5;
+      margin: 0 auto 40px;
+      font-size: 16px;
     }
-    section {
-      padding: 40px 20px;
-      max-width: 900px;
-      margin: auto;
+
+    .beneficios li {
+      margin-bottom: 10px;
     }
-    .card {
-      background: #020617;
-      border-radius: 16px;
-      padding: 24px;
-      margin-bottom: 24px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+
+    .preco {
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 30px;
     }
-    h2 {
-      margin-top: 0;
-      color: #38bdf8;
+
+    .botao {
+      display: inline-block;
+      padding: 18px 45px;
+      background-color: #0f0f0f;
+      color: white;
+      text-decoration: none;
+      border-radius: 14px;
+      font-size: 18px;
+      transition: transform 0.3s ease, background 0.3s ease;
     }
-    ul {
-      padding-left: 20px;
+
+    .botao:hover {
+      background-color: #2b2b2b;
+      transform: scale(1.05);
     }
-    .cta {
-      text-align: center;
-      margin-top: 40px;
-    }
-    .cta button {
-      background: #38bdf8;
-      border: none;
-      padding: 14px 28px;
-      font-size: 1rem;
-      border-radius: 999px;
-      cursor: pointer;
-      font-weight: bold;
-    }
+
     footer {
+      background-color: #0f0f0f;
+      color: white;
       text-align: center;
-      padding: 20px;
-      color: #94a3b8;
-      font-size: 0.9rem;
+      padding: 40px;
+      margin-top: 100px;
+      font-size: 14px;
     }
   </style>
 </head>
-<body>  <header>
-    <h1>Vertexa</h1>
-    <p>Ferramentas simples de produtividade, foco e organização para quem quer liberdade, clareza e evolução real.</p>
-  </header> <section style="max-width: 800px; margin: 50px auto; font-family: Arial, sans-serif;">
-  <h1>Crie seu primeiro site mesmo sem saber programação</h1>
 
-  <p>
-    Você quer ter um site, mas não sabe por onde começar?
-    Neste guia simples, você vai aprender o passo a passo para criar
-    seu primeiro site do zero, de forma prática e sem complicação.
-  </p>
+<body>
 
-  <h3>O que você vai aprender:</h3>
-  <ul>
-    <li>Como criar um site simples</li>
-    <li>Onde criar um site grátis</li>
-    <li>Como mudar textos e imagens</li>
-    <li>Como publicar seu site</li>
-    <li>Como acessar no celular e no computador</li>
-  </ul>
+  <header>
+    <div class="logo">Vertexa</div>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">Produtos</a>
+      <a href="#">Contato</a>
+    </nav>
+  </header>
 
-  <h2>Preço: R$ 9,90</h2>
-
-  <button style="
-    padding: 15px 25px;
-    font-size: 16px;
-    background-color: black;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-  ">
-    Quero aprender agora
-  </button>
-
-  <p style="margin-top: 20px; font-size: 14px; color: gray;">
-    *Pagamento será adicionado em breve.
-  </p>
-</section>  <section>
-    <div class="card">
-      <h2>O que é a Vertexa?</h2>
+  <main>
+    <section class="produto">
+      <h1>Programação do Zero</h1>
       <p>
-        A Vertexa é uma marca digital focada em criar sistemas simples para ajudar pessoas a organizarem a vida,
-        aumentarem o foco e evoluírem de forma consistente — sem complicação e sem papo de guru.
+        O guia definitivo para quem quer aprender programação do jeito certo,
+        mesmo começando do absoluto zero.
       </p>
-    </div><div class="card">
-  <h2>Nossos Produtos</h2>
-  <ul>
-    <li>Planners digitais (diário, semanal e mensal)</li>
-    <li>Guias práticos de foco e disciplina</li>
-    <li>Templates de organização pessoal</li>
-    <li>Sistemas simples para rotina e hábitos</li>
-  </ul>
-</div>
 
-<div class="card">
-  <h2>Por que funciona?</h2>
-  <ul>
-    <li>Simples de usar</li>
-    <li>Baseado em ação, não teoria</li>
-    <li>Serve para qualquer idade</li>
-    <li>Evolui junto com você</li>
-  </ul>
-</div>
+      <ul class="beneficios">
+        <li>✅ Como pensar como um programador</li>
+        <li>✅ Fundamentos essenciais da programação</li>
+        <li>✅ HTML, CSS e JavaScript explicados do zero</li>
+        <li>✅ Criar seus primeiros projetos reais</li>
+        <li>✅ Caminho claro para evoluir na área</li>
+      </ul>
 
-<div class="cta">
-  <p><strong>Primeiro produto em breve.</strong></p>
-  <button>Quero evoluir</button>
-</div>
+      <div class="preco">R$ 19,90</div>
 
-  </section>  <footer>
-    © 2026 — Vertexa. Todos os direitos reservados.
-  </footer></body>
+      <a class="botao" href="#">Quero começar agora</a>
+
+      <p style="margin-top: 20px; font-size: 14px; color: gray;">
+        *Pagamento será adicionado em breve.
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <p>Vertexa © 2026 — Todos os direitos reservados</p>
+    <p>Empresa focada em educação digital e liberdade financeira</p>
+  </footer>
+
+</body>
 </html>
