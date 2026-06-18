@@ -1,154 +1,330 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <title>Vertexa — Programação do Zero</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dog Walker Vila Leopoldina | Passeios Profissionais</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1e3d59;
+            --secondary: #ff6e40;
+            --accent: #17b978;
+            --text-dark: #222831;
+            --bg-light: #f5f7fa;
+            --white: #ffffff;
+        }
 
-  <!-- FONTE PREMIUM -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
 
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background: linear-gradient(180deg, #f5f6fa, #ffffff);
-      color: #111;
-    }
+        body {
+            color: var(--text-dark);
+            background-color: var(--white);
+            line-height: 1.6;
+        }
 
-    header {
-      background-color: #0f0f0f;
-      padding: 20px 60px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      color: white;
-    }
+        /* Header */
+        header {
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 1rem 2rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
 
-    header .logo {
-      font-size: 26px;
-      font-weight: 700;
-      letter-spacing: 1px;
-    }
+        .nav-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-    header nav a {
-      color: white;
-      margin-left: 25px;
-      text-decoration: none;
-      font-weight: 400;
-    }
+        .logo {
+            font-weight: 800;
+            font-size: 1.4rem;
+            letter-spacing: -0.5px;
+        }
 
-    main {
-      max-width: 1100px;
-      margin: 80px auto;
-      padding: 0 20px;
-    }
+        .logo span {
+            color: var(--secondary);
+        }
 
-    .produto {
-      background-color: white;
-      padding: 60px;
-      border-radius: 22px;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.15);
-      text-align: center;
-    }
+        .btn-header {
+            background-color: var(--secondary);
+            color: var(--white);
+            padding: 0.6rem 1.2rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: background 0.3s ease;
+        }
 
-    .produto h1 {
-      font-size: 40px;
-      margin-bottom: 20px;
-    }
+        .btn-header:hover {
+            background-color: #e25b2f;
+        }
 
-    .produto p {
-      font-size: 18px;
-      color: #444;
-      margin-bottom: 30px;
-    }
+        /* Hero Section */
+        .hero {
+            margin-top: 60px;
+            background: linear-gradient(rgba(30, 61, 89, 0.85), rgba(30, 61, 89, 0.95)), url('https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=1200&q=80') no-repeat center center/cover;
+            color: var(--white);
+            padding: 5rem 2rem;
+            text-align: center;
+        }
 
-    .beneficios {
-      text-align: left;
-      max-width: 520px;
-      margin: 0 auto 40px;
-      font-size: 16px;
-    }
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
 
-    .beneficios li {
-      margin-bottom: 10px;
-    }
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
 
-    .preco {
-      font-size: 32px;
-      font-weight: 700;
-      margin-bottom: 30px;
-    }
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
 
-    .botao {
-      display: inline-block;
-      padding: 18px 45px;
-      background-color: #0f0f0f;
-      color: white;
-      text-decoration: none;
-      border-radius: 14px;
-      font-size: 18px;
-      transition: transform 0.3s ease, background 0.3s ease;
-    }
+        .badge-julho {
+            display: inline-block;
+            background-color: var(--secondary);
+            color: var(--white);
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+        }
 
-    .botao:hover {
-      background-color: #2b2b2b;
-      transform: scale(1.05);
-    }
+        /* Detalhes do Serviço */
+        .features {
+            padding: 4rem 2rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
 
-    footer {
-      background-color: #0f0f0f;
-      color: white;
-      text-align: center;
-      padding: 40px;
-      margin-top: 100px;
-      font-size: 14px;
-    }
-  </style>
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            color: var(--primary);
+        }
+
+        .grid-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background-color: var(--bg-light);
+            padding: 2.5rem 2rem;
+            border-radius: 12px;
+            text-align: center;
+            border-bottom: 4px solid var(--primary);
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .card p {
+            color: #555;
+            font-size: 1rem;
+        }
+
+        .price-tag {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--accent);
+            margin-top: 0.5rem;
+        }
+
+        /* Localização e Infos */
+        .info-section {
+            background-color: var(--bg-light);
+            padding: 4rem 2rem;
+        }
+
+        .info-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--white);
+            padding: 3rem;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+
+        .info-location h3 {
+            font-size: 1.6rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .info-location p {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .info-location span {
+            color: #666;
+            display: block;
+            margin-bottom: 2rem;
+        }
+
+        /* Botão de Ação Principal */
+        .btn-cta {
+            display: inline-block;
+            background-color: var(--accent);
+            color: var(--white);
+            padding: 1.2rem 2.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 15px rgba(23, 185, 120, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .btn-cta:hover {
+            background-color: #139e66;
+            transform: scale(1.02);
+        }
+
+        /* Diferenciais */
+        .bullets {
+            margin: 2rem 0;
+            text-align: left;
+            display: inline-block;
+        }
+
+        .bullets li {
+            list-style: none;
+            margin-bottom: 0.8rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+        }
+
+        .bullets li::before {
+            content: "✓";
+            color: var(--accent);
+            font-weight: 800;
+            margin-right: 10px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary);
+            color: rgba(255,255,255,0.7);
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.9rem;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+            .info-container { padding: 2rem 1.5rem; }
+            .nav-container { flex-direction: column; gap: 1rem; text-align: center; }
+        }
+    </style>
 </head>
-
 <body>
 
-  <header>
-    <div class="logo">Vertexa</div>
-    <nav>
-      <a href="#">Home</a>
-      <a href="#">Produtos</a>
-      <a href="#">Contato</a>
-    </nav>
-  </header>
+    <header>
+        <div class="nav-container">
+            <div class="logo">DOGWALKER <span>LEOPOLDINA</span></div>
+            <a href="https://wa.me/5511987654321" target="_blank" class="btn-header">Agendar Horário</a>
+        </div>
+    </header>
 
-  <main>
-    <section class="produto">
-      <h1>Como viralizar no Tiktok?</h1>
-      <p>
-        O guia definitivo para quem quer aprender a respeito de algoritimo e viralização do jeito certo,
-        mesmo começando do absoluto zero.
-      </p>
-
-      <ul class="beneficios">
-        <li>✅ Entenda como o algoritimo funciona na plataforma</li>
-        <li>✅ Descubra os fatores que influenciam o alcance e engajamento</li>
-        <li>✅ Crie seus primeiros projetos reais e aplicáveis</li>
-        <li>✅ Siga um caminho claro pra evoluir e crescer na área</li>
-        <li>✅ Alcance resultados reais e transforme seu conhecimento em oportunidades</li>
-      </ul>
-
-      <div class="preco">R$ 5,00</div>
-
-      <a class="botao" href="#">Quero começar agora</a>
-
-      <p style="margin-top: 20px; font-size: 14px; color: gray;">
-        *Pagamento será adicionado em breve.
-      </p>
+    <section class="hero">
+        <div class="hero-content">
+            <span class="badge-julho">Temporada Especial de Julho</span>
+            <h1>Passeios Profissionais e Seguros para o seu Cão</h1>
+            <p>Atendimento exclusivo na Vila Leopoldina. Seu pet ativo, saudável e feliz mesmo nos dias mais frios de julho.</p>
+            <a href="https://wa.me/5511987654321" target="_blank" class="btn-cta">Reservar Vaga no WhatsApp</a>
+        </div>
     </section>
-  </main>
 
-  <footer>
-    <p>Vertexa © 2026 — Todos os direitos reservados</p>
-    <p>Empresa focada em educação digital e liberdade financeira</p>
-  </footer>
+    <section class="features">
+        <h2 class="section-title">Como Funciona o Serviço</h2>
+        <div class="grid-features">
+            <div class="card">
+                <h3>Frequência</h3>
+                <p>Disponível todos os dias da semana durante todo o mês de **Julho**.</p>
+            </div>
+            <div class="card">
+                <h3>Duração</h3>
+                <p>Cada passeio tem foco total no gasto de energia e bem-estar do pet.</p>
+                <div class="price-tag">1 Hora</div>
+            </div>
+            <div class="card">
+                <h3>Investimento</h3>
+                <p>Preço fixo e transparente por saída agendada.</p>
+                <div class="price-tag">R$ 25,00</div>
+                <p style="font-size: 0.8rem; color: #888;">por passeio</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="info-section">
+        <div class="info-container">
+            <div class="info-location">
+                <h3>Área de Atendimento</h3>
+                <p>Rua Nagel, 33</p>
+                <span>Vila Leopoldina — São Paulo, SP</span>
+            </div>
+            
+            <hr style="border: 0; border-top: 1px solid #eee; margin: 1.5rem 0;">
+
+            <ul class="bullets">
+                <li>Cuidado e atenção 100% individualizada</li>
+                <li>Passeios focados em gasto de energia e socialização</li>
+                <li>Envio de fotos e atualizações em tempo real</li>
+                <li>Vagas estritamente limitadas para garantir a segurança</li>
+            </ul>
+
+            <div style="margin-top: 2rem;">
+                <a href="https://wa.me/5511987654321" target="_blank" class="btn-cta">Consultar Horários Disponíveis</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Dog Walker Vila Leopoldina. Todos os direitos reservados.</p>
+        <p style="font-size: 0.8rem; margin-top: 0.5rem;">Desenvolvido com foco em excelência e cuidado animal.</p>
+    </footer>
 
 </body>
 </html>
