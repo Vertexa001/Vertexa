@@ -1,279 +1,647 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dog Walker Vila Leopoldina | Passeios Profissionais</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Villagio Padaria — Vila Leopoldina, São Paulo</title>
+<meta name="description" content="Padaria e confeitaria na Vila Leopoldina. Pão de queijo na chapa, bolo de milho na palha e buffet de café da manhã. Aberto todos os dias.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --crust:#2A1B12;
+    --crust-2:#3B2618;
+    --wheat:#F6EEDC;
+    --cream:#FFFBF2;
+    --gold:#E3A93A;
+    --gold-deep:#C88A26;
+    --paprika:#C1502E;
+    --paprika-deep:#A03E20;
+    --olive:#6B7048;
+    --line: rgba(42,27,18,0.12);
+    --shadow: 0 20px 40px -20px rgba(42,27,18,0.35);
+    --radius: 18px;
+  }
 
-    <style>
-        :root {
-            --primary: #1e3d59;
-            --secondary: #ff6e40;
-            --accent: #17b978;
-            --text-dark: #222831;
-            --bg-light: #f5f7fa;
-            --white: #ffffff;
-        }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--wheat);
+    color:var(--crust);
+    font-family:'Work Sans', sans-serif;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  h1,h2,h3{
+    font-family:'Fraunces', serif;
+    margin:0;
+    line-height:1.05;
+    font-weight:600;
+  }
+  p{margin:0;}
+  a{text-decoration:none;color:inherit;}
+  .eyebrow{
+    font-family:'Space Mono', monospace;
+    font-size:12.5px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--paprika-deep);
+    font-weight:700;
+  }
+  .wrap{
+    max-width:1120px;
+    margin:0 auto;
+    padding:0 24px;
+  }
+  img,svg{display:block;}
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; scroll-behavior:auto !important;}
+  }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inter', sans-serif;
-        }
+  /* ---------- TOPBAR ---------- */
+  .topbar{
+    position:sticky; top:0; z-index:50;
+    background:rgba(246,238,220,0.88);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .topbar-inner{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:14px 24px;
+    max-width:1120px; margin:0 auto;
+  }
+  .logo{
+    display:flex; align-items:center; gap:10px;
+    font-family:'Fraunces', serif;
+    font-weight:700; font-size:20px;
+    color:var(--crust);
+  }
+  .logo-mark{
+    width:30px; height:30px; border-radius:50%;
+    background:conic-gradient(from 200deg, var(--gold), var(--paprika), var(--gold-deep), var(--gold));
+    box-shadow: inset 0 0 0 3px var(--wheat), inset 0 0 0 4px var(--crust);
+    flex-shrink:0;
+  }
+  .topbar-status{
+    display:flex; align-items:center; gap:8px;
+    font-family:'Space Mono', monospace; font-size:12px;
+    color:var(--olive);
+  }
+  .dot{width:7px; height:7px; border-radius:50%; background:#4c7a3f; box-shadow:0 0 0 3px rgba(76,122,63,0.18);}
+  .topbar-cta{display:flex; gap:10px;}
+  @media (max-width:720px){ .topbar-status{display:none;} }
 
-        body {
-            color: var(--text-dark);
-            background-color: var(--white);
-            line-height: 1.6;
-        }
+  /* ---------- BUTTONS ---------- */
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:12px 20px;
+    border-radius:100px;
+    font-family:'Work Sans', sans-serif;
+    font-weight:600; font-size:14.5px;
+    border:1px solid transparent;
+    cursor:pointer;
+    transition:transform .15s ease, box-shadow .15s ease, background .15s ease;
+    white-space:nowrap;
+  }
+  .btn:focus-visible{outline:3px solid var(--olive); outline-offset:2px;}
+  .btn-primary{
+    background:var(--paprika); color:var(--cream);
+    box-shadow:0 10px 24px -10px rgba(193,80,46,0.65);
+  }
+  .btn-primary:hover{transform:translateY(-2px); background:var(--paprika-deep);}
+  .btn-ghost{
+    background:transparent; color:var(--crust);
+    border-color:var(--line);
+  }
+  .btn-ghost:hover{background:rgba(42,27,18,0.06); transform:translateY(-2px);}
+  .btn-sm{padding:9px 16px; font-size:13px;}
+  .btn-dark{background:var(--crust); color:var(--wheat);}
+  .btn-dark:hover{transform:translateY(-2px); background:var(--crust-2);}
 
-        header {
-            background-color: var(--primary);
-            color: var(--white);
-            padding: 1rem 2rem;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    padding:76px 24px 60px;
+    overflow:hidden;
+    background:
+      radial-gradient(60% 55% at 84% 18%, rgba(227,169,58,0.35), transparent 60%),
+      radial-gradient(50% 45% at 15% 85%, rgba(193,80,46,0.14), transparent 60%);
+  }
+  .hero-inner{
+    max-width:1120px; margin:0 auto;
+    display:grid; grid-template-columns:1.15fr 0.85fr; gap:48px; align-items:center;
+  }
+  .hero h1{
+    font-size:clamp(38px, 5.4vw, 64px);
+    margin:16px 0 20px;
+    letter-spacing:-0.01em;
+  }
+  .hero h1 em{ font-style:italic; color:var(--paprika); }
+  .hero-sub{
+    font-size:18px; line-height:1.55; color:#4b3826; max-width:46ch; margin-bottom:30px;
+  }
+  .hero-cta{display:flex; gap:14px; flex-wrap:wrap; margin-bottom:34px;}
+  .hero-meta{
+    display:flex; gap:26px; flex-wrap:wrap;
+  }
+  .meta-item{display:flex; flex-direction:column; gap:2px;}
+  .meta-value{font-family:'Fraunces', serif; font-weight:700; font-size:22px; display:flex; align-items:center; gap:6px;}
+  .meta-label{font-family:'Space Mono', monospace; font-size:11.5px; letter-spacing:0.08em; text-transform:uppercase; color:#7a6650;}
+  .stars{color:var(--gold-deep); font-size:16px; letter-spacing:1px;}
 
-        .nav-container {
-            max-width: 1100px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+  .hero-art{
+    position:relative;
+    aspect-ratio:1/1;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .hero-art .glow{
+    position:absolute; inset:6%;
+    border-radius:50%;
+    background:radial-gradient(circle, rgba(227,169,58,0.55), rgba(227,169,58,0) 70%);
+    filter:blur(2px);
+  }
+  .steam-line{
+    position:absolute;
+    stroke:rgba(193,80,46,0.55);
+    stroke-width:3; fill:none; stroke-linecap:round;
+    transform-origin:bottom center;
+    animation:rise 3.4s ease-in-out infinite;
+  }
+  .steam-line:nth-child(2){animation-delay:.5s;}
+  .steam-line:nth-child(3){animation-delay:1s;}
+  @keyframes rise{
+    0%{ opacity:0; transform:translateY(6px) scaleY(0.85);}
+    30%{opacity:1;}
+    100%{ opacity:0; transform:translateY(-22px) scaleY(1.1);}
+  }
 
-        .logo {
-            font-weight: 800;
-            font-size: 1.4rem;
-            letter-spacing: -0.5px;
-        }
+  /* ---------- STATUS STRIP ---------- */
+  .strip{
+    background:var(--crust);
+    color:var(--wheat);
+  }
+  .strip-inner{
+    max-width:1120px; margin:0 auto; padding:22px 24px;
+    display:flex; flex-wrap:wrap; gap:26px 40px; align-items:center; justify-content:space-between;
+  }
+  .strip-item{display:flex; align-items:center; gap:12px;}
+  .strip-icon{
+    width:38px; height:38px; border-radius:10px;
+    background:rgba(227,169,58,0.14);
+    display:flex; align-items:center; justify-content:center;
+    flex-shrink:0;
+  }
+  .strip-text .t1{font-family:'Space Mono', monospace; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:#c9b79a;}
+  .strip-text .t2{font-weight:600; font-size:14.5px; margin-top:2px;}
 
-        .logo span {
-            color: var(--secondary);
-        }
+  /* ---------- SECTION HEADERS ---------- */
+  .section{padding:88px 24px;}
+  .section-head{
+    max-width:640px; margin-bottom:48px;
+  }
+  .section-head h2{
+    font-size:clamp(30px, 3.6vw, 42px);
+    margin-top:12px;
+  }
+  .section-head p{color:#5c4632; font-size:16.5px; margin-top:14px; line-height:1.6;}
 
-        .btn-header {
-            background-color: var(--secondary);
-            color: var(--white);
-            padding: 0.6rem 1.2rem;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.9rem;
-            transition: background 0.3s ease;
-        }
+  /* ---------- VITRINE (SIGNATURE SHELF) ---------- */
+  .vitrine{background:var(--cream);}
+  .shelf-scroll{
+    display:flex; gap:20px;
+    overflow-x:auto;
+    padding:10px 4px 34px;
+    scroll-snap-type:x proximity;
+  }
+  .shelf-scroll::-webkit-scrollbar{height:6px;}
+  .shelf-scroll::-webkit-scrollbar-thumb{background:var(--line); border-radius:10px;}
+  .shelf-card{
+    flex:0 0 240px;
+    scroll-snap-align:start;
+    background:var(--wheat);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:22px 20px 20px;
+    position:relative;
+    display:flex; flex-direction:column; gap:14px;
+    transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .shelf-card:hover{transform:translateY(-6px); box-shadow:var(--shadow);}
+  .shelf-icon{
+    width:56px; height:56px; border-radius:50%;
+    background:linear-gradient(150deg, #F3D896, var(--gold));
+    display:flex; align-items:center; justify-content:center;
+  }
+  .badge{
+    position:absolute; top:16px; right:16px;
+    font-family:'Space Mono', monospace; font-size:10px; letter-spacing:.06em; text-transform:uppercase;
+    background:var(--paprika); color:var(--cream);
+    padding:4px 9px; border-radius:100px; font-weight:700;
+  }
+  .shelf-card h3{font-size:17.5px; font-weight:600; line-height:1.25;}
+  .shelf-line{
+    height:3px; width:100%;
+    background:repeating-linear-gradient(90deg, var(--olive) 0 8px, transparent 8px 14px);
+    opacity:.55; border-radius:2px;
+  }
 
-        .btn-header:hover {
-            background-color: #e25b2f;
-        }
+  /* ---------- BUFFET FEATURE ---------- */
+  .feature{
+    background:var(--crust);
+    color:var(--wheat);
+    position:relative;
+    overflow:hidden;
+  }
+  .feature::before{
+    content:"";
+    position:absolute; inset:0;
+    background:radial-gradient(45% 60% at 90% 10%, rgba(227,169,58,0.18), transparent 60%);
+  }
+  .feature-inner{
+    max-width:1120px; margin:0 auto; padding:96px 24px;
+    display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:center;
+    position:relative;
+  }
+  .feature h2{font-size:clamp(30px,3.6vw,40px); color:var(--wheat); margin-top:12px;}
+  .feature p{color:#d9c8ae; font-size:16.5px; line-height:1.65; margin-top:18px;}
+  .feature-quote{
+    margin-top:26px;
+    border-left:2px solid var(--gold);
+    padding-left:18px;
+    font-family:'Fraunces', serif; font-style:italic; font-size:18px; color:#f0e4cd;
+  }
+  .clock{
+    width:100%; aspect-ratio:1/1; max-width:340px; margin:0 auto;
+    border-radius:50%;
+    background:radial-gradient(circle at 35% 30%, #3d2818, var(--crust) 70%);
+    border:1px solid rgba(227,169,58,0.3);
+    display:flex; align-items:center; justify-content:center;
+    position:relative;
+  }
+  .clock-ring{
+    position:absolute; inset:14%;
+    border-radius:50%;
+    border:1.5px dashed rgba(227,169,58,0.35);
+  }
+  .clock-center{
+    text-align:center;
+  }
+  .clock-center .big{font-family:'Fraunces', serif; font-size:44px; color:var(--gold); font-weight:600;}
+  .clock-center .small{font-family:'Space Mono', monospace; font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:#c9b79a; margin-top:6px;}
 
-        .hero {
-            margin-top: 60px;
-            background: linear-gradient(rgba(30, 61, 89, 0.85), rgba(30, 61, 89, 0.95)),
-            url('https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=1200&q=80')
-            no-repeat center center/cover;
-            color: var(--white);
-            padding: 5rem 2rem;
-            text-align: center;
-        }
+  /* ---------- REVIEWS ---------- */
+  .reviews{background:var(--wheat);}
+  .review-grid{
+    display:grid; grid-template-columns:0.7fr 1.3fr; gap:48px; align-items:start;
+  }
+  .rating-card{
+    background:var(--cream); border:1px solid var(--line); border-radius:var(--radius);
+    padding:32px; text-align:center;
+  }
+  .rating-big{font-family:'Fraunces', serif; font-size:56px; font-weight:700;}
+  .bars{display:flex; flex-direction:column; gap:7px; margin-top:20px; text-align:left;}
+  .bar-row{display:flex; align-items:center; gap:8px; font-family:'Space Mono', monospace; font-size:11px; color:#7a6650;}
+  .bar-track{flex:1; height:6px; background:rgba(42,27,18,0.08); border-radius:10px; overflow:hidden;}
+  .bar-fill{height:100%; background:var(--gold-deep); border-radius:10px;}
+  .quote-grid{display:grid; gap:18px;}
+  .quote-card{
+    background:var(--cream); border:1px solid var(--line); border-radius:var(--radius);
+    padding:26px 28px;
+  }
+  .quote-card p{font-family:'Fraunces', serif; font-size:19px; font-style:italic; line-height:1.5; color:#3a2a1c;}
+  .quote-foot{margin-top:14px; font-family:'Space Mono', monospace; font-size:12px; color:#8a7355;}
 
-        .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
-        }
+  /* ---------- LOCATION ---------- */
+  .location{background:var(--cream);}
+  .loc-grid{display:grid; grid-template-columns:1fr 1fr; gap:40px;}
+  .loc-card{
+    background:var(--wheat); border:1px solid var(--line); border-radius:var(--radius);
+    padding:32px;
+  }
+  .loc-row{display:flex; gap:16px; padding:16px 0; border-bottom:1px solid var(--line);}
+  .loc-row:last-child{border-bottom:none;}
+  .loc-icon{width:34px;height:34px;border-radius:9px;background:rgba(107,112,72,0.14);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .loc-row .t1{font-family:'Space Mono', monospace; font-size:11px; text-transform:uppercase; letter-spacing:.08em; color:#8a7355;}
+  .loc-row .t2{font-weight:600; font-size:15.5px; margin-top:3px;}
+  .map-card{
+    border-radius:var(--radius); overflow:hidden; border:1px solid var(--line);
+    background:
+      linear-gradient(rgba(42,27,18,0.55), rgba(42,27,18,0.55)),
+      repeating-linear-gradient(45deg, #d8c7a4 0 18px, #cdb98f 18px 36px);
+    min-height:280px;
+    display:flex; align-items:flex-end;
+    padding:26px;
+  }
+  .map-card-inner{color:var(--wheat);}
+  .map-card-inner .eyebrow{color:var(--gold);}
+  .map-card-inner h3{color:var(--wheat); font-size:22px; margin:8px 0 18px;}
 
-        .hero h1 {
-            font-size: 2.8rem;
-        }
+  /* ---------- FOOTER ---------- */
+  footer{
+    background:var(--crust); color:#c9b79a;
+    padding:44px 24px 100px;
+  }
+  .foot-inner{
+    max-width:1120px; margin:0 auto;
+    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;
+    font-size:13px;
+  }
+  .foot-inner .logo{color:var(--wheat);}
 
-        .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-        }
+  /* ---------- STICKY MOBILE CTA ---------- */
+  .mobile-cta{
+    position:fixed; bottom:0; left:0; right:0; z-index:60;
+    display:none;
+    background:var(--cream);
+    border-top:1px solid var(--line);
+    padding:12px 16px;
+    gap:10px;
+    box-shadow:0 -10px 30px -10px rgba(42,27,18,0.2);
+  }
+  .mobile-cta .btn{flex:1; justify-content:center;}
 
-        .badge-julho {
-            display: inline-block;
-            background-color: var(--secondary);
-            color: var(--white);
-            padding: 0.4rem 1rem;
-            border-radius: 50px;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-        }
-
-        .features {
-            padding: 4rem 2rem;
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2rem;
-            margin-bottom: 3rem;
-            color: var(--primary);
-        }
-
-        .grid-features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-        }
-
-        .card {
-            background-color: var(--bg-light);
-            padding: 2.5rem 2rem;
-            border-radius: 12px;
-            text-align: center;
-            border-bottom: 4px solid var(--primary);
-        }
-
-        .price-tag {
-            font-size: 2rem;
-            font-weight: 800;
-            color: var(--accent);
-        }
-
-        .info-section {
-            background-color: var(--bg-light);
-            padding: 4rem 2rem;
-        }
-
-        .info-container {
-            max-width: 800px;
-            margin: 0 auto;
-            background: var(--white);
-            padding: 3rem;
-            border-radius: 16px;
-        }
-
-        .bullets li {
-            list-style: none;
-            margin-bottom: 0.8rem;
-        }
-
-        .bullets li::before {
-            content: "✓";
-            color: var(--accent);
-            margin-right: 10px;
-        }
-
-        .btn-cta {
-            display: inline-block;
-            background-color: var(--accent);
-            color: var(--white);
-            padding: 1.2rem 2.5rem;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 700;
-        }
-
-        footer {
-            background-color: var(--primary);
-            color: rgba(255,255,255,0.7);
-            text-align: center;
-            padding: 2rem;
-        }
-    </style>
+  @media (max-width: 860px){
+    .hero-inner{grid-template-columns:1fr;}
+    .hero-art{order:-1; max-width:280px; margin:0 auto;}
+    .feature-inner{grid-template-columns:1fr;}
+    .review-grid{grid-template-columns:1fr;}
+    .loc-grid{grid-template-columns:1fr;}
+    .mobile-cta{display:flex;}
+    body{padding-bottom:76px;}
+    .section{padding:64px 20px;}
+  }
+</style>
 </head>
-
 <body>
 
-<header>
-    <div class="nav-container">
-        <div class="logo">DOGWALKER <span>LEOPOLDINA</span></div>
-        <a href="https://wa.me/5511910172012" target="_blank" class="btn-header">Agendar Horário</a>
+  <!-- TOPBAR -->
+  <div class="topbar">
+    <div class="topbar-inner">
+      <div class="logo"><span class="logo-mark"></span> Villagio Padaria</div>
+      <div class="topbar-status"><span class="dot"></span> Aberto agora · Fecha às 22h</div>
+      <div class="topbar-cta">
+        <a class="btn btn-ghost btn-sm" href="tel:+5511953050015">Ligar</a>
+        <a class="btn btn-primary btn-sm" href="https://www.google.com/searchviewer/42?cvd=CLw_EicKJeICIjIgEhkiF9LX29IPEQoNL2cvMTFjNnJiMXFrahgBOgMI8A0%3D&g2lbs=AEzIGDuE8jfmvUYXYbab-ZkdEZqWYasJWiHtMs5d8VPdOBUuAdALOg_jKOBPG7H5s0zK3AnGZyyt&hl=pt-BR&gl=br&ssta=1&fo_m=MfohQo559jFvMUOzJVpjPL1YMfZ3bInYwBDuMfaXTPp5KXh-&utm_source=search&gei=LsSIaqDACryw5OUP2NLm4A4&ei=LsSIaqDACryw5OUP2NLm4A4&fo_s=OA&opi=89978449&orderType=1&ebb=1&foub=mcpp" target="_blank" rel="noopener">Pedir online</a>
+      </div>
     </div>
-</header>
+  </div>
 
-<section class="hero">
-    <div class="hero-content">
-        <span class="badge-julho">Temporada de Julho</span>
-        <h1>Passeios Seguros e Cheios de Carinho para o seu Cão</h1>
-        <p>Atendimento na Vila Leopoldina com foco em bem-estar e segurança dos pets.</p>
-        <a href="https://wa.me/5511910172012" class="btn-cta">Reservar no WhatsApp</a>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div>
+        <p class="eyebrow">Padaria &amp; Confeitaria · Vila Leopoldina, SP</p>
+        <h1>Pão de queijo<br>quentinho, todo <em>santo</em> dia.</h1>
+        <p class="hero-sub">Forno aceso desde cedo para o buffet de café da manhã, pratos no almoço por quilo e a vitrine de sempre: bolo de milho na palha, pão na chapa e muito mais.</p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="https://www.google.com/searchviewer/42?cvd=CLw_EicKJeICIjIgEhkiF9LX29IPEQoNL2cvMTFjNnJiMXFrahgBOgMI8A0%3D&g2lbs=AEzIGDuE8jfmvUYXYbab-ZkdEZqWYasJWiHtMs5d8VPdOBUuAdALOg_jKOBPG7H5s0zK3AnGZyyt&hl=pt-BR&gl=br&ssta=1&fo_m=MfohQo559jFvMUOzJVpjPL1YMfZ3bInYwBDuMfaXTPp5KXh-&utm_source=search&gei=LsSIaqDACryw5OUP2NLm4A4&ei=LsSIaqDACryw5OUP2NLm4A4&fo_s=OA&opi=89978449&orderType=1&ebb=1&foub=mcpp" target="_blank" rel="noopener">Pedir online →</a>
+          <a class="btn btn-ghost" href="#vitrine">Ver cardápio</a>
+        </div>
+        <div class="hero-meta">
+          <div class="meta-item">
+            <span class="meta-value"><span class="stars">★★★★☆</span> 4,3</span>
+            <span class="meta-label">1.721 avaliações</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-value">R$ 40–60</span>
+            <span class="meta-label">Preço por pessoa</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-value">7h – 22h</span>
+            <span class="meta-label">Todos os dias</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-art">
+        <div class="glow"></div>
+        <svg viewBox="0 0 220 220" width="260" height="260">
+          <ellipse cx="110" cy="150" rx="72" ry="14" fill="rgba(42,27,18,0.10)"/>
+          <path d="M110 60c34 0 58 22 58 50s-26 44-58 44-58-18-58-44 24-50 58-50z" fill="url(#g1)"/>
+          <path d="M78 96c6-10 20-16 32-16s26 6 32 16" stroke="rgba(160,62,32,0.5)" stroke-width="3" fill="none" stroke-linecap="round"/>
+          <circle cx="90" cy="112" r="4" fill="rgba(160,62,32,0.35)"/>
+          <circle cx="130" cy="118" r="4" fill="rgba(160,62,32,0.35)"/>
+          <circle cx="110" cy="128" r="4" fill="rgba(160,62,32,0.35)"/>
+          <path class="steam-line" d="M85 60c-6-10 6-14 0-24" />
+          <path class="steam-line" d="M110 52c-6-10 6-14 0-24" />
+          <path class="steam-line" d="M135 60c-6-10 6-14 0-24" />
+          <defs>
+            <linearGradient id="g1" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#F3D896"/>
+              <stop offset="1" stop-color="#C88A26"/>
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
     </div>
-</section>
+  </section>
 
-<section class="features">
-    <h2 class="section-title">Como Funciona</h2>
-
-    <div class="grid-features">
-        <div class="card">
-            <h3>Frequência</h3>
-            <p>Disponível a partir da segunda semana de Julho</p>
+  <!-- STATUS STRIP -->
+  <div class="strip">
+    <div class="strip-inner">
+      <div class="strip-item">
+        <div class="strip-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 2v20M2 12h20" stroke="#E3A93A" stroke-width="0" /><path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 0118 0z" stroke="#E3A93A" stroke-width="1.6"/><circle cx="12" cy="10" r="2.6" stroke="#E3A93A" stroke-width="1.6"/></svg>
         </div>
-
-        <div class="card">
-            <h3>Duração</h3>
-            <div class="price-tag">1 Hora</div>
+        <div class="strip-text"><div class="t1">Endereço</div><div class="t2">R. Froben, 185 — Vila Leopoldina</div></div>
+      </div>
+      <div class="strip-item">
+        <div class="strip-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#E3A93A" stroke-width="1.6"/><path d="M12 7v5l3.5 2" stroke="#E3A93A" stroke-width="1.6" stroke-linecap="round"/></svg>
         </div>
-
-        <div class="card">
-            <h3>Preço</h3>
-            <div class="price-tag">R$ 25</div>
+        <div class="strip-text"><div class="t1">Horário</div><div class="t2">Aberto agora · fecha às 22h</div></div>
+      </div>
+      <div class="strip-item">
+        <div class="strip-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M4 4h4l2 5-2.5 1.5a12 12 0 006 6L15 14l5 2v4a2 2 0 01-2 2C9.6 22 2 14.4 2 6a2 2 0 012-2z" stroke="#E3A93A" stroke-width="1.6" stroke-linejoin="round"/></svg>
         </div>
+        <div class="strip-text"><div class="t1">Telefone</div><div class="t2">(11) 95305-0015</div></div>
+      </div>
+      <a class="btn btn-primary btn-sm" href="tel:+5511953050015">Ligar agora</a>
     </div>
-</section>
+  </div>
 
-<section class="info-section">
-    <div class="info-container">
+  <!-- VITRINE / SIGNATURE SHELF -->
+  <section class="section vitrine" id="vitrine">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">A vitrine de hoje</p>
+        <h2>Do forno pra sua mesa, direto da chapa.</h2>
+        <p>Os pedidos que mais saem por aqui — arraste para o lado e escolha o seu.</p>
+      </div>
 
-        <h3 style="color:#1e3d59;">Área de Atendimento</h3>
-        <p>Rua Nagel, 33 - Vila Leopoldina</p>
+      <div class="shelf-scroll">
 
-        <hr style="margin: 1.5rem 0;">
-
-        <ul class="bullets">
-            <li>Cuidado individualizado</li>
-            <li>Passeios seguros e monitorados</li>
-            <li>Atualizações em tempo real</li>
-            <li>Vagas limitadas</li>
-        </ul>
-
-        <!-- QUEM SOU EU (INSERIDO NO LUGAR CORRETO) -->
-        <div style="background:#f5f7fa; padding:2rem; border-radius:12px; margin-top:2rem; text-align:left;">
-            <h3 style="color:#1e3d59; margin-bottom:1rem;">Quem Sou Eu</h3>
-
-            <p>
-                Olá! Meu nome é <strong>Samuel</strong>, tenho <strong>14 anos</strong>
-                e convivo com cães há quase <strong>7 anos</strong>.
-            </p>
-
-            <p>
-                Criei este projeto para as férias de julho porque gosto muito de animais
-                e quero usar meu tempo de forma produtiva.
-            </p>
-
-            <p>
-                Ofereço passeios seguros, com atenção e carinho para cada cachorro.
-            </p>
-
-            <p>
-                Se tiver interesse, fale comigo pelo WhatsApp. Obrigado!
-            </p>
+        <div class="shelf-card">
+          <span class="badge">Mais pedido</span>
+          <div class="shelf-icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8" fill="#2A1B12" fill-opacity="0"/><circle cx="12" cy="12" r="8" stroke="#2A1B12" stroke-width="1.6"/><circle cx="9" cy="9" r="1" fill="#2A1B12"/><circle cx="15" cy="10" r="1" fill="#2A1B12"/><circle cx="10" cy="15" r="1" fill="#2A1B12"/></svg>
+          </div>
+          <h3>Pão de Queijo na Chapa</h3>
+          <div class="shelf-line"></div>
         </div>
 
-        <div style="margin-top: 2rem;">
-            <a href="https://wa.me/5511910172012" class="btn-cta">
-                Consultar Horários Disponíveis
-            </a>
+        <div class="shelf-card">
+          <span class="badge">Mais pedido</span>
+          <div class="shelf-icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M4 16l8-11 8 11z" stroke="#2A1B12" stroke-width="1.6" stroke-linejoin="round"/><path d="M4 16h16v2H4z" fill="#2A1B12"/></svg>
+          </div>
+          <h3>Bolo de Milho na Palha</h3>
+          <div class="shelf-line"></div>
         </div>
 
+        <div class="shelf-card">
+          <div class="shelf-icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><rect x="3" y="9" width="18" height="6" rx="3" stroke="#2A1B12" stroke-width="1.6"/><path d="M6 9V7a6 6 0 0112 0v2" stroke="#2A1B12" stroke-width="1.6"/></svg>
+          </div>
+          <h3>Beirute</h3>
+          <div class="shelf-line"></div>
+        </div>
+
+        <div class="shelf-card">
+          <div class="shelf-icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#2A1B12" stroke-width="1.6"/><path d="M12 3v18M3 12h18" stroke="#2A1B12" stroke-width="1.2" stroke-dasharray="2 3"/></svg>
+          </div>
+          <h3>Buffet de Café da Manhã</h3>
+          <div class="shelf-line"></div>
+        </div>
+
+        <div class="shelf-card">
+          <div class="shelf-icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8" stroke="#2A1B12" stroke-width="1.6"/><path d="M8 12h8M8 9h8M8 15h5" stroke="#2A1B12" stroke-width="1.4" stroke-linecap="round"/></svg>
+          </div>
+          <h3>Pão de Queijo Multigrãos</h3>
+          <div class="shelf-line"></div>
+        </div>
+
+        <div class="shelf-card">
+          <div class="shelf-icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M8 3h8l-1 12a3 3 0 01-3 3h0a3 3 0 01-3-3z" stroke="#2A1B12" stroke-width="1.6" stroke-linejoin="round"/><path d="M9 18h6l1 3H8z" stroke="#2A1B12" stroke-width="1.6"/></svg>
+          </div>
+          <h3>Suco de Morango e Pão de Queijo</h3>
+          <div class="shelf-line"></div>
+        </div>
+
+        <div class="shelf-card">
+          <div class="shelf-icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><rect x="4" y="10" width="16" height="8" rx="2" stroke="#2A1B12" stroke-width="1.6"/><path d="M4 10l8-6 8 6" stroke="#2A1B12" stroke-width="1.6" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>Pão na Chapa com Requeijão</h3>
+          <div class="shelf-line"></div>
+        </div>
+
+      </div>
+
+      <div style="text-align:center; margin-top:8px;">
+        <a class="btn btn-dark" href="https://www.google.com/searchviewer/42?cvd=CLw_EicKJeICIjIgEhkiF9LX29IPEQoNL2cvMTFjNnJiMXFrahgBOgMI8A0%3D&g2lbs=AEzIGDuE8jfmvUYXYbab-ZkdEZqWYasJWiHtMs5d8VPdOBUuAdALOg_jKOBPG7H5s0zK3AnGZyyt&hl=pt-BR&gl=br&ssta=1&fo_m=MfohQo559jFvMUOzJVpjPL1YMfZ3bInYwBDuMfaXTPp5KXh-&utm_source=search&gei=LsSIaqDACryw5OUP2NLm4A4&ei=LsSIaqDACryw5OUP2NLm4A4&fo_s=OA&opi=89978449&orderType=1&ebb=1&foub=mcpp" target="_blank" rel="noopener">Ver cardápio completo</a>
+      </div>
     </div>
-</section>
+  </section>
 
-<footer>
-    <p>© 2026 Dog Walker Vila Leopoldina</p>
-</footer>
+  <!-- BUFFET FEATURE -->
+  <section class="feature" id="buffet">
+    <div class="feature-inner">
+      <div>
+        <p class="eyebrow" style="color:var(--gold);">Café da manhã</p>
+        <h2>Buffet self-service, à vontade, sem pressa.</h2>
+        <p>Saladas variadas, pista de quentes, pão australiano com geleia e um espresso daqueles pra começar bem o dia. Chegue cedo e escolha com calma — tudo fresquinho, reposto o tempo todo.</p>
+        <p class="feature-quote">"Café da manhã buffet self-service muito bom, com bastante opções de escolha."</p>
+      </div>
+      <div class="clock">
+        <div class="clock-ring"></div>
+        <div class="clock-center">
+          <div class="big">7–11h</div>
+          <div class="small">Buffet de café da manhã</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section class="section reviews">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">O que dizem os clientes</p>
+        <h2>1.721 avaliações no Google.</h2>
+      </div>
+      <div class="review-grid">
+        <div class="rating-card">
+          <div class="rating-big">4,3</div>
+          <div class="stars" style="font-size:20px; margin-top:6px;">★★★★☆</div>
+          <div class="bars">
+            <div class="bar-row"><span>5</span><div class="bar-track"><div class="bar-fill" style="width:68%;"></div></div></div>
+            <div class="bar-row"><span>4</span><div class="bar-track"><div class="bar-fill" style="width:18%;"></div></div></div>
+            <div class="bar-row"><span>3</span><div class="bar-track"><div class="bar-fill" style="width:8%;"></div></div></div>
+            <div class="bar-row"><span>2</span><div class="bar-track"><div class="bar-fill" style="width:3%;"></div></div></div>
+            <div class="bar-row"><span>1</span><div class="bar-track"><div class="bar-fill" style="width:3%;"></div></div></div>
+          </div>
+        </div>
+        <div class="quote-grid">
+          <div class="quote-card">
+            <p>"Boa diversidade de produtos e pratos no almoço por quilo."</p>
+            <div class="quote-foot">Avaliação no Google</div>
+          </div>
+          <div class="quote-card">
+            <p>"Café da manhã buffet self-service muito bom, com bastante opções de escolha."</p>
+            <div class="quote-foot">Avaliação no Google</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOCATION -->
+  <section class="section location" id="local">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Como chegar</p>
+        <h2>Vila Leopoldina te espera.</h2>
+      </div>
+      <div class="loc-grid">
+        <div class="loc-card">
+          <div class="loc-row">
+            <div class="loc-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 0118 0z" stroke="#6B7048" stroke-width="1.6"/><circle cx="12" cy="10" r="2.6" stroke="#6B7048" stroke-width="1.6"/></svg></div>
+            <div><div class="t1">Endereço</div><div class="t2">R. Froben, 185 — Vila Leopoldina, São Paulo - SP, 05315-010</div></div>
+          </div>
+          <div class="loc-row">
+            <div class="loc-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#6B7048" stroke-width="1.6"/><path d="M12 7v5l3.5 2" stroke="#6B7048" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+            <div><div class="t1">Horário de hoje</div><div class="t2">Salão aberto · fecha às 22h<br>Cozinha fechada — reabre sábado às 11h30</div></div>
+          </div>
+          <div class="loc-row">
+            <div class="loc-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M4 4h4l2 5-2.5 1.5a12 12 0 006 6L15 14l5 2v4a2 2 0 01-2 2C9.6 22 2 14.4 2 6a2 2 0 012-2z" stroke="#6B7048" stroke-width="1.6" stroke-linejoin="round"/></svg></div>
+            <div><div class="t1">Telefone</div><div class="t2">(11) 95305-0015</div></div>
+          </div>
+          <div style="display:flex; gap:12px; margin-top:22px; flex-wrap:wrap;">
+            <a class="btn btn-primary" href="tel:+5511953050015">Ligar agora</a>
+            <a class="btn btn-ghost" href="https://maps.google.com/maps?vet=10CAAQoqAOahcKEwio2Jyb1rKWAxUAAAAAHQAAAAAQBQ..i&pvq=Cg0vZy8xMWM2cmIxcWtqIg4KCHZpbGxhZ2lvEAIYAw&lqi=Chh2aWxsYWdpbyB2aWxhIGxlb3BvbGRpbmFIsLSD9ZqrgIAIWiIQABgAGAEYAiIYdmlsbGFnaW8gdmlsYSBsZW9wb2xkaW5hkgEGYmFrZXJ5mgEkQ2hkRFNVaE5NRzluUzBWSlEwRm5TVVJsZFRWbVoyNUJSUkFC-gEECAAQQw&fvr=1&cs=0&um=1&ie=UTF-8&fb=1&gl=br&sa=X&ftid=0x94cef8bc625e1c71:0x30e7411f6dbdc094" target="_blank" rel="noopener">Ver rotas</a>
+          </div>
+        </div>
+        <div class="map-card">
+          <div class="map-card-inner">
+            <p class="eyebrow">Vila Leopoldina · São Paulo</p>
+            <h3>R. Froben, 185</h3>
+            <a class="btn btn-primary btn-sm" href="https://maps.google.com/maps?vet=10CAAQoqAOahcKEwio2Jyb1rKWAxUAAAAAHQAAAAAQBQ..i&pvq=Cg0vZy8xMWM2cmIxcWtqIg4KCHZpbGxhZ2lvEAIYAw&lqi=Chh2aWxsYWdpbyB2aWxhIGxlb3BvbGRpbmFIsLSD9ZqrgIAIWiIQABgAGAEYAiIYdmlsbGFnaW8gdmlsYSBsZW9wb2xkaW5hkgEGYmFrZXJ5mgEkQ2hkRFNVaE5NRzluUzBWSlEwRm5TVVJsZFRWbVoyNUJSUkFC-gEECAAQQw&fvr=1&cs=0&um=1&ie=UTF-8&fb=1&gl=br&sa=X&ftid=0x94cef8bc625e1c71:0x30e7411f6dbdc094" target="_blank" rel="noopener">Abrir no Google Maps →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="foot-inner">
+      <div class="logo"><span class="logo-mark"></span> Villagio Padaria</div>
+      <div>R. Froben, 185 — Vila Leopoldina, São Paulo · (11) 95305-0015</div>
+      <div>© 2026 Villagio Padaria</div>
+    </div>
+  </footer>
+
+  <!-- MOBILE STICKY CTA -->
+  <div class="mobile-cta">
+    <a class="btn btn-ghost" href="tel:+5511953050015">Ligar</a>
+    <a class="btn btn-primary" href="https://www.google.com/searchviewer/42?cvd=CLw_EicKJeICIjIgEhkiF9LX29IPEQoNL2cvMTFjNnJiMXFrahgBOgMI8A0%3D&g2lbs=AEzIGDuE8jfmvUYXYbab-ZkdEZqWYasJWiHtMs5d8VPdOBUuAdALOg_jKOBPG7H5s0zK3AnGZyyt&hl=pt-BR&gl=br&ssta=1&fo_m=MfohQo559jFvMUOzJVpjPL1YMfZ3bInYwBDuMfaXTPp5KXh-&utm_source=search&gei=LsSIaqDACryw5OUP2NLm4A4&ei=LsSIaqDACryw5OUP2NLm4A4&fo_s=OA&opi=89978449&orderType=1&ebb=1&foub=mcpp" target="_blank" rel="noopener">Pedir online</a>
+  </div>
 
 </body>
 </html>
